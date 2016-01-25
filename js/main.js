@@ -14,5 +14,11 @@
 
         }
     });
+    app.directive("rightrailinc",function(){
+        return{
+            restrict:'E',
+            templateUrl:"rightrailinc.html"
 
+        }
+    });
 })();
