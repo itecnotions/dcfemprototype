@@ -97,8 +97,31 @@ footer{
     background-color:#333;
 }
 
-
-
+#article{
+    margin-top:60px;
+}
+#article h1{
+    margin: 20px 0;
+}
+#article h2{
+    margin:20px 0;
+    font-size:30px;
+}
+#article h1{
+    font-size:40px;
+}
+#article .rightrail h2{
+    margin:0;
+    background-color: #77cdcc;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 25px;
+    padding: 10px;
+    width:100%;
+}
+#article .rightrail h2 a{
+    color:#fff;
+}
 @media (max-width: 1200px) {
     .navbar-header {
         float: none;
