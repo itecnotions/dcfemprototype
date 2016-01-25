@@ -241,3 +241,19 @@ footer{
     display: block;
     font-size:16px;
 }
+
+.sponsors{
+     display: table;
+     height:200px;
+ }
+.sponsors a{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.copyright{
+    background-color: #333;
+    color:#fff;
+    font-size:10px;
+    text-align: center;
+}
