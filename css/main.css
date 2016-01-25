@@ -9,17 +9,7 @@ body {
     padding-top: 50px;
 }
 h2{
-    font-size:30px;
-}
-#banner{
-    background-color: #77cdcc;
-    position:absolute;
-    top:0;
-    left: 0;
-    height: 100%;
-    width:100%;
-    opacity: 0.8;
-    z-index: 2;
+    font-size:40px;
 }
 .navbar{
    background-image: url('http://i45.tinypic.com/r0qglx.jpg');
@@ -33,54 +23,79 @@ h2{
     background:none;
 }
 
-footer{
-    background-color: #77cdcc;
-}
 .navbar .navbar-brand{
     font-size:35px;
     color:#eee;
 }
-.wide {
-    width:100%;
-    height:100%;
-    height:calc(100% - 1px);
-    background-image:url('http://dcfemtech.github.io/images/ladies.jpg');
-    background-size:cover;
-    background-position: 0px -122px;
+footer{
+    background-color: #77cdcc;
 }
-.wide h1{
-    font-size:40px;
-    font-weight: bold;
-    text-shadow: 0 0 10px #000;
-    line-height:48px;
+footer a{
+    color:#fff;
+    font-weight:bold;
+    text-decoration: underline;
 }
-.intro{
+.btn-dark{
+    color:#fff;
+    background-color: #333;
+}
+.btn-dark:hover{
     color:#eee;
-    padding-top:15em;
-    text-align:center;
 }
-.wide img {
-    width:100%;
+header {
+    background:
+            radial-gradient(
+                    rgba(0, 0, 0, 0.5),
+                    rgba(119, 205, 204, 0.9)
+            ),
+            url(http://dcfemtech.github.io/images/ladies.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.title {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+header h1 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 3.8rem;
+    white-space: nowrap;
+    text-shadow: 2px 2px #000;
+}
+header p {
+    margin: 0;
+    font-size: 1.3rem;
+}
+#intro p, #intro ul{
+    font-size:22px;
 }
 #groups{
     background-color:#3a3a3a;
 }
 #groups .row img{
     width: 200px;
+    height:200px;
     padding:10px;
     border:1px solid #d3d3d3;
     padding:5px;
 
 }
 #groups .row{
-
     margin:30px 0;
 }
 .fc-border-separate tbody tr.fc-first td, .fc-border-separate tbody tr.fc-first th{width:14.28%}
 footer{
     color:#fff;
 }
-
+.footer .btn{
+    background-color:#333;
+}
 
 
 
