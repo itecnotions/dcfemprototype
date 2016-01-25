@@ -100,15 +100,17 @@ footer{
 #article{
     margin-top:60px;
 }
-#article h1{
+#article .leftrail a{color:#77cdcc}
+#article .leftrail h1{
     margin: 20px 0;
+    font-size:40px;
 }
-#article h2{
+.organizations #article p{
+    border-bottom:1px solid #333;
+}
+#article .leftrail h2{
     margin:20px 0;
     font-size:30px;
-}
-#article h1{
-    font-size:40px;
 }
 #article .rightrail h2{
     margin:0;
