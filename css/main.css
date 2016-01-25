@@ -206,3 +206,38 @@ footer{
 .slick-next::before {
     content: "\25b6";
 }
+
+#meetup {
+    height: auto;
+    max-height: 550px;
+    border:1px solid #77cdcc;
+    border-radius: 10px;
+    padding:10px;
+    overflow-x: hidden;
+    margin:25px 0;
+}
+#meetup .lists{
+    border-bottom: 1px solid #ddd;
+    float: left;
+    line-height: 20px;
+    margin-bottom: 9px;
+    width: 100%;
+}
+#meetup .dt{
+    float:left;
+    margin-right:20px;
+    width:20%;
+    text-align:center;
+}
+#meetup .dt .sTime{
+    font-size:12px;
+    color:#77cdcc;
+}
+#meetup .dt .sMonth{
+    font-weight:bold;
+    font-size:20px;
+}
+#meetup .dt .sDay{
+    display: block;
+    font-size:16px;
+}

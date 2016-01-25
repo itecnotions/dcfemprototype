@@ -35,6 +35,10 @@
                     <a class="twitter-timeline" href="https://twitter.com/hashtag/dcfemtechjobs" data-widget-id="505864402512248832">#dcfemtechjobs Tweets</a>
                 </section>
                 <section>
+                    <div id="meetup">
+                    </div>
+                </section>
+                <section>
                     <h2 class="content-subhead"><a href="https://twitter.com/DCFemTech">@DCFemTech</a></h2>
                     <a class="twitter-timeline" href="https://twitter.com/DCFemTech" data-widget-id="472814457001738240">Tweets by @DCFemTech</a>
                 </section>
@@ -45,8 +49,49 @@
 <footerinc></footerinc>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        var fetch_meetups = function(){
+
+            var groups = ['Ladies-Who-Code-Washington-DC','Girl-Develop-It-DC', 'dc-pyladies', 'Women-Who-Code-DC' ];
+            var api_url = 'http://api.meetup.com/2/events?order=time&key=2721217a7241b22132f3f30c715f64&group_urlname=NAME&callback=?';
+
+            for (i in groups){
+                var group_name = groups[i];
+                $.getJSON(api_url.replace('NAME', group_name),
+                        function(data, text_status, jqxhr){
+
+                            var events = [];
+
+                            for (e in data['results']) {
+                                var event = data['results'][e];
+                                var date = new Date(event['time']).toString();
+                                var M = date.substr(4,3);
+                                var D = date.substr(7,3);
+                                var t = date.substr(16,5);
+                                var hourEnd = t.indexOf(":");
+                                var H = +t.substr(0, hourEnd);
+                                var h = H % 12 || 12;
+                                var ampm = H < 12 ? "AM" : "PM";
+                                t = h + t.substr(hourEnd, 3) + ampm;
+
+                                $('#meetup').append("<div class='lists'><span class='dt'>" +
+                                        "<span class='sMonth'>"+M+"</span>" +
+                                        "<span class='sDay'>"+D+"</span>" +
+                                        "<span class='sTime'>"+t+"</span>" +
+                                        "</span>" +
+                                        "<a href='"+event['event_url'] +"'>"+event['group']['name'] + ' - ' + event['name']+"</a>" +
+                                        "</div>");
+                            }
+                        });
+            }
+
+        };
+        fetch_meetups();
+    });
+
+</script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

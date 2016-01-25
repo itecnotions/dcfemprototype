@@ -30,22 +30,31 @@
 
 <section id="intro">
     <div class="container">
-    <div>
-        <h2>Welcome to #DCFemTech</h2>
-        <p>DCFemTech is a coalition of women leaders aimed at amplifying women in tech organizations, sharing resources, and bringing leaders together to close the gender gap. Bimonthly meetings are inclusive and open to any women in tech leaders.</p>
-    </div>
-    <div>
-        <h2>Who is DCFemTech?</h2>
-        <p>
-            <strong>Members</strong> are affiliated with organizations
-        </p>
-        <ul>
-        <li>with women attendance that is 50% or higher</li>
-        <li>who have a focus on technology</li>
-        <li>have a primary focus in the mission statement about gender or women.</li>
-    </ul>
-        <p>DCFemTech also shares a list of resources for the DCFemTech community for those seeking places to learn specific skills (development, design, networking, etc.)</p>
-    </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div>
+                    <h2>Welcome to #DCFemTech</h2>
+                    <p>DCFemTech is a coalition of women leaders aimed at amplifying women in tech organizations, sharing resources, and bringing leaders together to close the gender gap. Bimonthly meetings are inclusive and open to any women in tech leaders.</p>
+                </div>
+                <div>
+                    <h2>Who is DCFemTech?</h2>
+                    <p>
+                        <strong>Members</strong> are affiliated with organizations
+                    </p>
+                    <ul>
+                        <li>with women attendance that is 50% or higher</li>
+                        <li>who have a focus on technology</li>
+                        <li>have a primary focus in the mission statement about gender or women.</li>
+                    </ul>
+                    <p>DCFemTech also shares a list of resources for the DCFemTech community for those seeking places to learn specific skills (development, design, networking, etc.)</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="meetup">
+                </div>
+            </div>
+        </div>
+
 </div>
 </section>
 <section id="groups">
@@ -137,19 +146,10 @@
         </div>
     </div>
 </section>
-<br />
-<section id="main_content" class="inner">
-<div class="container">
-    <div id="calendar" class="fc fc-ltr"></div>
-</div>
-</section>
-<br/>
 <footerinc></footerinc>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
-
 <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -196,20 +196,6 @@
            ]
        });
 
-        // page is now ready, initialize the calendar...
-        $('#calendar').fullCalendar({
-            eventSources: [ {
-                url: 'https://www.google.com/calendar/feeds/7nffm8fujjn1gim5auqnqbbr24%40group.calendar.google.com/public/basic',
-                className: 'DCFemTech'
-            },
-                {
-                    url: 'https://www.google.com/calendar/feeds/project101dc%40gmail.com/public/basic',
-                    className: 'Project101'
-                }
-            ]
-        });
-
-
         var fetch_meetups = function(){
 
             var groups = ['Ladies-Who-Code-Washington-DC','Girl-Develop-It-DC', 'dc-pyladies', 'Women-Who-Code-DC' ];
@@ -225,29 +211,31 @@
                             for (e in data['results']) {
                                 var event = data['results'][e];
                                 var date = new Date(event['time']).toString();
-                                var o = {
-                                    'title': event['group']['name'] + ' - ' + event['name'],
-                                    'start': date,
-                                    'url': event['event_url'],
-                                    'className': event['group']['urlname'].toLowerCase()
-                                };
-                                events.push(o);
+                                var M = date.substr(4,3);
+                                var D = date.substr(7,3);
+                                var t = date.substr(16,5);
+                                var hourEnd = t.indexOf(":");
+                                var H = +t.substr(0, hourEnd);
+                                var h = H % 12 || 12;
+                                var ampm = H < 12 ? "AM" : "PM";
+                                t = h + t.substr(hourEnd, 3) + ampm;
+
+                                $('#meetup').append("<div class='lists'><span class='dt'>" +
+                                        "<span class='sMonth'>"+M+"</span>" +
+                                        "<span class='sDay'>"+D+"</span>" +
+                                        "<span class='sTime'>"+t+"</span>" +
+                                        "</span>" +
+                                        "<a href='"+event['event_url'] +"'>"+event['group']['name'] + ' - ' + event['name']+"</a>" +
+                                        "</div>");
                             }
-
-                            $('#calendar').fullCalendar('addEventSource', events);
-                        }
-                )
-
+                        });
             }
 
-        }
-
+        };
         fetch_meetups();
     });
 
 </script>
-<script type="text/javascript" src="scripts/ui.js"></script>
-
 </body>
 
 </html>
