@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="navigationCtrl">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -10,15 +10,15 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav  navbar-right">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="organizations.html">Organizations</a></li>
-                <li><a href="dcftawards.html">DCFT Awards</a></li>
-                <li><a href="hackforgood.html">Hack For Good</a></li>
-                <li><a href="tourdecode.html">Tour de Code</a></li>
-                <li><a href="codecoffee.html">Code &amp; Coffee</a></li>
+                <li ng-class="{ active: isCurrentPath('index.html') }"><a href="index.html">Home</a></li>
+                <li ng-class="{ active: isCurrentPath('organizations.html') }"><a href="organizations.html">Organizations</a></li>
+                <li ng-class="{ active: isCurrentPath('dcftawards.html') }"><a href="dcftawards.html">DCFT Awards</a></li>
+                <li ng-class="{ active: isCurrentPath('hackforgood.html') }"><a href="hackforgood.html">Hack For Good</a></li>
+                <li ng-class="{ active: isCurrentPath('tourdecode.html') }"><a href="tourdecode.html">Tour de Code</a></li>
+                <li ng-class="{ active: isCurrentPath('codecoffee.html') }"><a href="codecoffee.html">Code &amp; Coffee</a></li>
             </ul>
+
         </div><!--/.nav-collapse -->
     </div>
 </div>
-
 <!-- /.container -->

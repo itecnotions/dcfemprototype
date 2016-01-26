@@ -3,10 +3,20 @@
     app.directive("navinc",function(){
        return{
            restrict:'E',
-           templateUrl:"nav.html"
-
+           templateUrl:"nav.html",
+           controller:"navigationCtrl"
        }
     });
+    app.controller('navigationCtrl', ['$scope', '$location', function ($scope, $location) {
+        $scope.isCurrentPath = function (path) {
+            var url=window.location.href;
+            var arr=url.split('/')[url.split('/').length-1];
+            if(arr==null || arr=="" || arr==undefined){
+                arr="index.html";
+            }
+            return arr == path;
+        };
+    }]);
     app.directive("footerinc",function(){
         return{
             restrict:'E',
